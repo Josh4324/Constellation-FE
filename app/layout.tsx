@@ -32,35 +32,13 @@ const fontHeading = localFont({
   variable: "--font-heading",
 });
 
-const toronet: Chain = {
-  id: 54321,
-  name: "Toronet",
-  network: "toronet",
-  iconUrl: "https://example.com/icon.svg",
-  iconBackground: "#fff",
-  nativeCurrency: {
-    decimals: 18,
-    name: "Toronet",
-    symbol: "TORO",
-  },
-  rpcUrls: {
-    public: { http: ["https://testnet.toronet.org/rpc/"] },
-    default: { http: ["https://testnet.toronet.org/rpc/"] },
-  },
-  blockExplorers: {
-    default: { name: "SnowTrace", url: "https://testnet.toronet.org/" },
-    etherscan: { name: "SnowTrace", url: "https://testnet.toronet.org/" },
-  },
-  testnet: true,
-};
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   const { chains, publicClient } = configureChains(
-    [toronet],
+    [avalancheFuji],
     [alchemyProvider({ apiKey: "" }), publicProvider()]
   );
 
