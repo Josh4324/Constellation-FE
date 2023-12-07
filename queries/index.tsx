@@ -54,7 +54,61 @@ export function GET_USER(addr) {
               overall_score
               score
               user
-            
                 }
                   }`;
+}
+
+export function GET_ALL_ACTIONS() {
+  return `query   {
+            actions {
+            id
+            action_type
+            description
+            proof
+            status
+            confirmed
+            creator
+            }
+        }`;
+}
+
+export function GET_ALL_WASTES(addr) {
+  return `query {
+            wastes {
+                id
+                weight
+                sorted
+                status
+                confirmed
+                creator
+               
+              }
+                }`;
+}
+
+export function GET_ALL_TREES(addr) {
+  return `query {
+            trees {
+                id
+                no_of_trees
+                locations
+                creator
+                status
+                confirmed  
+                }
+                  }`;
+}
+
+export function GET_ALL_USER(addr) {
+  return `query {
+            users{
+                id
+                trees
+                waste
+                actions
+                overall_score
+                score
+                user
+                  }
+                    }`;
 }
