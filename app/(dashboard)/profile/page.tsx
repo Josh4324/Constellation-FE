@@ -183,7 +183,7 @@ export default function Profile() {
             Avax Balance -{" "}
             <span className="text-lg pt-6 font-bold">
               {balance?.formatted !== "NaN"
-                ? Number(balance?.formatted).toFixed(3)
+                ? Number(balance?.formatted).toFixed(4)
                 : ""}
             </span>
           </div>
