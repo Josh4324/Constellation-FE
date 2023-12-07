@@ -43,13 +43,6 @@ export default function Admin() {
     return ecoContract;
   };
 
-  const createReadContract = async () => {
-    const { ethereum } = window;
-    const provider = new ethers.BrowserProvider(ethereum);
-    const contract = new ethers.Contract(eco, ecoABI.abi, provider);
-    return contract;
-  };
-
   const getActions = async () => {
     const actions = await subgraphQuery(GET_ALL_ACTIONS());
     const data = actions.actions;

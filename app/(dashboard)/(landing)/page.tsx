@@ -251,7 +251,7 @@ export default function Home() {
         <div>
           <div className="text-center text-2xl">Paid Out</div>
           <div className="text-center text-lg pt-6 font-bold">
-            {Number(paid)} eco
+            {Number(paid) / 10 ** 18} avax
           </div>
         </div>
 
