@@ -9,7 +9,7 @@ export async function subgraphQuery(query) {
   try {
     // Replace YOUR-SUBGRAPH-URL with the url of your subgraph
     const SUBGRAPH_URL =
-      "https://api.studio.thegraph.com/query/47405/test/version/latest";
+      "https://api.studio.thegraph.com/query/47405/eco4reward/version/latest";
     const response = await axios.post(SUBGRAPH_URL, {
       query,
     });

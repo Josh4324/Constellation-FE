@@ -55,6 +55,8 @@ export default function Admin() {
     const waste = await subgraphQuery(GET_ALL_WASTES());
     const data = waste.wastes;
 
+    console.log(data);
+
     if (data) {
       setData1(data);
     }
@@ -166,6 +168,8 @@ export default function Admin() {
   };
 
   const approveWaste = async (id, score) => {
+    console.log("id", id);
+    console.log("here");
     const contract = await createWriteContract();
 
     console.log(id);

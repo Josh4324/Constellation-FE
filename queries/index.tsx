@@ -5,7 +5,7 @@
 
 export function GET_ACTIONS(addr) {
   return `query  {
-          actions (where: { creator: "${addr}" }) {
+          actions (where: { creator: "${addr}" }, orderDirection: desc, orderBy: id) {
           id
           action_type
           description
@@ -19,7 +19,7 @@ export function GET_ACTIONS(addr) {
 
 export function GET_WASTES(addr) {
   return `query {
-          wastes(where: { creator: "${addr}" }) {
+          wastes(where: { creator: "${addr}" }, orderDirection: desc, orderBy: id) {
               id
               weight
               sorted
@@ -33,7 +33,7 @@ export function GET_WASTES(addr) {
 
 export function GET_TREES(addr) {
   return `query {
-          trees(where: { creator: "${addr}" }) {
+          trees(where: { creator: "${addr}" }, orderDirection: desc, orderBy: id) {
               id
               no_of_trees
               locations
@@ -46,7 +46,7 @@ export function GET_TREES(addr) {
 
 export function GET_USER(addr) {
   return `query {
-          users(where: { user: "${addr}" }) {
+          users(where: { user: "${addr}" }, orderDirection: desc, orderBy: id) {
               id
               trees
               waste
@@ -59,8 +59,8 @@ export function GET_USER(addr) {
 }
 
 export function GET_ALL_ACTIONS() {
-  return `query   {
-            actions {
+  return `query {
+            actions(orderDirection: desc, orderBy: id ) {
             id
             action_type
             description
@@ -72,9 +72,9 @@ export function GET_ALL_ACTIONS() {
         }`;
 }
 
-export function GET_ALL_WASTES(addr) {
+export function GET_ALL_WASTES() {
   return `query {
-            wastes {
+            wastes(orderDirection: desc, orderBy: id) {
                 id
                 weight
                 sorted
@@ -86,9 +86,9 @@ export function GET_ALL_WASTES(addr) {
                 }`;
 }
 
-export function GET_ALL_TREES(addr) {
+export function GET_ALL_TREES() {
   return `query {
-            trees {
+            trees(orderDirection: desc, orderBy: id) {
                 id
                 no_of_trees
                 locations

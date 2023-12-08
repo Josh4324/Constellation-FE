@@ -85,12 +85,12 @@ export default function OrderPage() {
     const contract = await createWriteContract();
 
     const id = toast.loading("Transaction in progress..");
+    const sort = sortRef.current.value === "true" ? true : false;
+
+    console.log(sortRef.current.value);
 
     try {
-      const tx = await contract.registerWaste(
-        weightRef.current.value,
-        sortRef.current.value
-      );
+      const tx = await contract.registerWaste(weightRef.current.value, sort);
 
       await tx.wait();
       setTimeout(() => {
@@ -370,8 +370,8 @@ export default function OrderPage() {
                     "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                   )}
                 >
-                  <option>True</option>
-                  <option>False</option>
+                  <option value="true">True</option>
+                  <option value="false">False</option>
                 </select>
               </div>
 
