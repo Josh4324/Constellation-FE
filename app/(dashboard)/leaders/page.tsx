@@ -66,7 +66,7 @@ export default function Leader() {
         <table className="font-heading mx-auto w-98 text-white px-3 table-auto w-full">
           <tbody>
             <tr className="font-heading">
-              <th>Id</th>
+              <th>User Id</th>
               <th>Medal</th>
               <th>User</th>
               <th>Score</th>
@@ -110,7 +110,7 @@ export default function Leader() {
         <table className="font-heading mx-auto w-98 text-white px-3 table-auto w-full">
           <tbody>
             <tr className="font-heading">
-              <th>Id</th>
+              <th>User Id</th>
               <th>Medal</th>
               <th>User</th>
               <th>Score</th>
