@@ -8,8 +8,8 @@ import { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { useAccount, useNetwork } from "wagmi";
-import { eco } from "@/utils/constant";
-import ecoABI from "../../../abi/eco.json";
+import { lot } from "@/utils/constant";
+import lotABI from "../../../abi/lot.json";
 import { ethers } from "ethers";
 import { toast } from "react-toastify";
 import { GET_ALL_USER } from "../../../queries";
@@ -18,6 +18,7 @@ import { subgraphQuery } from "../../../utils";
 export default function Leader() {
   const [data, setData] = useState([]);
   const [data1, setData1] = useState([]);
+  const [winner, setWinner] = useState("");
 
   const getuserData = async () => {
     const users = await subgraphQuery(GET_ALL_USER());
@@ -34,12 +35,31 @@ export default function Leader() {
     }
   };
 
+  const createReadContract = async () => {
+    const { ethereum } = window;
+    const provider = new ethers.BrowserProvider(ethereum);
+    const contract = new ethers.Contract(lot, lotABI.abi, provider);
+    return contract;
+  };
+
+  const getWinner = async () => {
+    const contract = await createReadContract();
+    const data = await contract.s_recentWinner();
+    console.log(data);
+    setWinner(data);
+  };
+
   useEffect(() => {
     getuserData();
+    getWinner();
   }, []);
 
   return (
     <section className="container flex flex-col  gap-6 py-8 md:max-w-[64rem] md:py-12 lg:py-24">
+      <div className="pb-6">
+        Lastest Winner of the ECO4REWARD Lottery: {winner}
+      </div>
+
       <div className="font-bold text-lg">Current Leaders</div>
 
       <section style={{ marginTop: "30px", overflowX: "auto" }} className="">
